@@ -10,6 +10,9 @@ This assignment 4 is dedicated to the design and implementation of data structur
 The shortest route (path) is realized using Dykstra algorithme (DFS).
 
 # UML of the project :
+<p align="center">
+  <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147593396-7e749d9a-2d9c-4f5b-a976-3cdc17fb3e3c.png"/>
+</p>
 
 # Ex3 Contains 2 Interfaces :
 1) GraphAlgoInterface
@@ -62,8 +65,24 @@ The shortest route (path) is realized using Dykstra algorithme (DFS).
   
 # Tests that we are running :
   * TestDiGraph.py
+    * test_e_size()
+    * test_get_mc()
+    * test_add_edge()
+    * test_add_node()
+    * test_remove_node()
+    * test_remove_edge()
+    * test_v_size()
+    * test_get_all_v()
+    * test_all_in_edges_of_node()
+    * test_all_out_edges_of_node()
   * TestGraphAlgo.py
+    * test_center()
+    * test_TSP()
+    * test_shorted_path():
   * comparre_Test.py
+    * test_center()
+    * test_TSP()
+    * test_shorted_path()
 
 # Graphs that we have created :
 
