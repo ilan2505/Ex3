@@ -87,3 +87,27 @@ The shortest route (path) is realized using Dykstra algorithme (DFS).
     * test_shorted_path()
 
 # Graphs that we have created :
+A0 :
+<p align="center">
+  <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147609749-40fc3ccc-e5a4-48ba-bf3a-e26b828c3388.png"/>
+</p>
+A1 :
+<p align="center">
+  <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147609792-79dd7c7a-0eae-4b70-8ddc-22e662b4ed9c.png"/>
+</p>
+A2 :
+<p align="center">
+  <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147609818-2c2db755-f69e-46ad-b2bb-3744ba569f60.png"/>
+</p>
+A3 :
+<p align="center">
+  <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147609841-8801c741-f982-4515-af53-469b7d7a4488.png"/>
+</p>
+A4 :
+<p align="center">
+  <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147609878-0714f51c-b95a-40cc-80b8-d5c220e358d4.png"/>
+</p>
+A5 :
+<p align="center">
+  <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147609904-6942e887-99c0-484f-bc6c-5e2a60bbbafa.png"/>
+</p>
