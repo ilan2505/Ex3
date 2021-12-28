@@ -9,6 +9,9 @@ Fourth Assignment in OOP course in Python @Ariel_University_2021
 This assignment 4 is dedicated to the design and implementation of data structures and algorithms on graphs (directed and weighted) but this time in python.
 The shortest route (path) is realized using Dykstra algorithme (DFS).
 
+# Analysis of the performance of our algorithms on size graphs :
+
+
 # UML of the project :
 <p align="center">
   <img align="center" width=60% src = "https://user-images.githubusercontent.com/55143087/147593396-7e749d9a-2d9c-4f5b-a976-3cdc17fb3e3c.png"/>
@@ -35,7 +38,6 @@ The shortest route (path) is realized using Dykstra algorithme (DFS).
    * We are using find_tsp(self.graph, node_lst) in the class find_tsp.py
  * centerPoint(self) -> (int, float) : Finds the node that has the shortest distance to it's farthest node.
  * plot_graph(self) -> None : Plots the graph. If the nodes have a position, the nodes will be placed there. Otherwise, they will be placed in a random but elegant manner.
-
 
 # 2) DiGraph
  This class is an implementation of GraphInterface.
@@ -85,8 +87,3 @@ The shortest route (path) is realized using Dykstra algorithme (DFS).
     * test_shorted_path()
 
 # Graphs that we have created :
-
-# Array Excel of the Results :
-
-
-
