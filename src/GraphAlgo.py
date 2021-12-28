@@ -1,32 +1,17 @@
 import json
+import time
 from random import random
 from typing import List
 
 from Ex3.src.DiGraph import DiGraph
-from Ex3.src.Dijkstra_Algorithm import Dijkstra_shorted_path, Dijkstra_center
-from Ex3.src.GraphAlgoInterface import GraphAlgoInterface
+from Ex3.src.Dijkstra_Algorithm import Dijkstra_shorted_path, Dijkstra_center, value
 from Ex3.src.find_tsp import find_tsp
-from Ex3.src.selfcheck import value
 import matplotlib.pyplot as plt
 
-MAX = 214932743
+MAX = float('inf')
 
 
 class GraphAlgo:
-    def value(pos: str):
-        t = list(pos)
-        r = int(t.index(','))
-        x = pos[0:r]
-        le = len(t)
-        t = list(pos[r + 1:le])
-        pos = pos[r + 1:le]
-        r = int(t.index(','))
-        y = pos[0:r]
-        le = len(t)
-        t = list(pos[r + 1:le])
-        pos = pos[r + 1:le]
-        z = pos[0:le]
-        return float(x), float(y), float(z)
 
     def __init__(self, g: DiGraph = ({}, {}, {}, 0, 0)):
         if g == ({}, {}, {}, 0, 0) or g == ():
@@ -47,6 +32,7 @@ class GraphAlgo:
             id = int(y[i]['id'])
             try:
                 pos = (y[i]['pos'])
+
                 pos = tuple(value(pos))
             except:
                 pos = (random() * 1000, random() * 1000, 0.0)
@@ -76,32 +62,34 @@ class GraphAlgo:
         return find_tsp(self.graph, node_lst)
 
     def centerPoint(self) -> (int, float):
+
         center = 0
         dist = MAX
         nodelist = tuple(self.graph.get_all_v())
         for i in range(len(nodelist)):
-            dist1 = Dijkstra_center(self.graph, i)
+            dist1 = Dijkstra_center(self.graph, i, dist)
             if dist1 < dist:
                 dist = dist1
                 center = i
 
         return center, dist
 
-    def plot_graph(self) -> None:
-        Nodes = self.graph.get_all_v()
-        fig, ax = plt.subplots(1, 1)
 
-        for i in range(len(Nodes)):
-            try:
-                Edges = tuple(self.graph.all_out_edges_of_node(i).keys())
-            except:
-                Edges = ()
-            ax.scatter(Nodes[i][1][0], Nodes[i][1][1], 15, color='b')
-            for j in range(len(Edges)):
-                dest = Nodes.get(Edges[j])
-                plt.plot([Nodes[i][1][0], dest[1][0]], [Nodes[i][1][1], dest[1][1]], color='yellow')
-                x1 = Nodes[i][1][0] * 0.1 + dest[1][0] * 0.9
-                y1 = Nodes[i][1][1] * 0.1 + dest[1][1] * 0.9
-                plt.annotate(text='', xy=(x1, y1), xytext=(dest[1][0], dest[1][1]), arrowprops=dict(arrowstyle='<-'))
+def plot_graph(self) -> None:
+    Nodes = self.graph.get_all_v()
+    fig, ax = plt.subplots(1, 1)
 
-        plt.show()
+    for i in range(len(Nodes)):
+        try:
+            Edges = tuple(self.graph.all_out_edges_of_node(i).keys())
+        except:
+            Edges = ()
+        ax.scatter(Nodes[i][1][0], Nodes[i][1][1], 15, color='b')
+        for j in range(len(Edges)):
+            dest = Nodes.get(Edges[j])
+            plt.plot([Nodes[i][1][0], dest[1][0]], [Nodes[i][1][1], dest[1][1]], color='yellow')
+            x1 = Nodes[i][1][0] * 0.1 + dest[1][0] * 0.9
+            y1 = Nodes[i][1][1] * 0.1 + dest[1][1] * 0.9
+            plt.annotate(text='', xy=(x1, y1), xytext=(dest[1][0], dest[1][1]), arrowprops=dict(arrowstyle='<-'))
+
+    plt.show()

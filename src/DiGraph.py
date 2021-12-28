@@ -2,10 +2,6 @@ import this
 from collections import OrderedDict, abc
 from random import random
 
-from Ex3.src.EdgeData import EdgeData
-from Ex3.src.GraphInterface import GraphInterface
-from Ex3.src.NodeData import NodeData
-
 
 class DiGraph:
     def __init__(self, graph: list = ({}, {}, {}, 0, 0)):

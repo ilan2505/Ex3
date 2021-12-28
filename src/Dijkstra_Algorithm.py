@@ -2,7 +2,22 @@ from Ex3.src.DiGraph import DiGraph
 
 from Ex3.src.OrderedSet import add, creat, dec
 
-MAX = 214932743
+MAX = float('inf')
+
+
+def value(pos: str):
+    t = list(pos)
+    r = int(t.index(','))
+    x = pos[0:r]
+    le = len(t)
+    t = list(pos[r + 1:le])
+    pos = pos[r + 1:le]
+    r = int(t.index(','))
+    y = pos[0:r]
+    le = len(t)
+    pos = pos[r + 1:le]
+    z = pos[0:le]
+    return float(x), float(y), float(z)
 
 
 def Dijkstra_shorted_path(graph: DiGraph, src, dest):
@@ -42,7 +57,7 @@ def Dijkstra_shorted_path(graph: DiGraph, src, dest):
     return dist1[dest], t
 
 
-def Dijkstra_center(graph: DiGraph, src):
+def Dijkstra_center(graph: DiGraph, src, dist2):
     Q = list(graph.Nodelist)
     dist = creat()
     dist1 = creat()
@@ -55,11 +70,17 @@ def Dijkstra_center(graph: DiGraph, src):
     dist = dec(dist, src, 0)
     dist1 = dec(dist1, src, 0)
     while len(Q) != 0 and len(Q) > 1:
+
         u = list(dist)[0]
+
+        xx=dist[u]
+        if xx > dist2:
+            return float('inf')
+
         Q.remove(u)
         x = graph.all_out_edges_of_node(u)
         if x is None:
-            return  219439875
+            return 219439875
         sort = tuple(x.values())
         for j in range(len(sort)):
 
