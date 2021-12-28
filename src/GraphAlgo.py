@@ -17,7 +17,7 @@ class GraphAlgo:
         if g == ({}, {}, {}, 0, 0) or g == ():
             self.graph = DiGraph(g)
         else:
-            n = (g[0], g[1], g[2], g[3], g[4])
+            n = (g.Nodelist, g.EdgeList, g.EdgeListIn, g.mc, g.esize)
             self.graph = DiGraph(n)
 
     def get_graph(self):  # ->GraphInterface:
@@ -67,6 +67,7 @@ class GraphAlgo:
         dist = MAX
         nodelist = tuple(self.graph.get_all_v())
         for i in range(len(nodelist)):
+            print(i)
             dist1 = Dijkstra_center(self.graph, i, dist)
             if dist1 < dist:
                 dist = dist1
@@ -74,22 +75,21 @@ class GraphAlgo:
 
         return center, dist
 
+    def plot_graph(self) -> None:
+        Nodes = self.graph.get_all_v()
+        fig, ax = plt.subplots(1, 1)
 
-def plot_graph(self) -> None:
-    Nodes = self.graph.get_all_v()
-    fig, ax = plt.subplots(1, 1)
+        for i in range(len(Nodes)):
+            try:
+                Edges = tuple(self.graph.all_out_edges_of_node(i).keys())
+            except:
+                Edges = ()
+            ax.scatter(Nodes[i][1][0], Nodes[i][1][1], 15, color='b')
+            for j in range(len(Edges)):
+                dest = Nodes.get(Edges[j])
+                plt.plot([Nodes[i][1][0], dest[1][0]], [Nodes[i][1][1], dest[1][1]], color='yellow')
+                x1 = Nodes[i][1][0] * 0.1 + dest[1][0] * 0.9
+                y1 = Nodes[i][1][1] * 0.1 + dest[1][1] * 0.9
+                plt.annotate(text='', xy=(x1, y1), xytext=(dest[1][0], dest[1][1]), arrowprops=dict(arrowstyle='<-'))
 
-    for i in range(len(Nodes)):
-        try:
-            Edges = tuple(self.graph.all_out_edges_of_node(i).keys())
-        except:
-            Edges = ()
-        ax.scatter(Nodes[i][1][0], Nodes[i][1][1], 15, color='b')
-        for j in range(len(Edges)):
-            dest = Nodes.get(Edges[j])
-            plt.plot([Nodes[i][1][0], dest[1][0]], [Nodes[i][1][1], dest[1][1]], color='yellow')
-            x1 = Nodes[i][1][0] * 0.1 + dest[1][0] * 0.9
-            y1 = Nodes[i][1][1] * 0.1 + dest[1][1] * 0.9
-            plt.annotate(text='', xy=(x1, y1), xytext=(dest[1][0], dest[1][1]), arrowprops=dict(arrowstyle='<-'))
-
-    plt.show()
+        plt.show()

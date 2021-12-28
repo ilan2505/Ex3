@@ -1,6 +1,6 @@
 from Ex3.src.DiGraph import DiGraph
 
-from Ex3.src.OrderedSet import add, creat, dec
+from Ex3.src.OrderedSet import OrderedSet
 
 MAX = float('inf')
 
@@ -22,31 +22,31 @@ def value(pos: str):
 
 def Dijkstra_shorted_path(graph: DiGraph, src, dest):
     Q = list(graph.Nodelist)
-    dist = creat()
-    dist1 = creat()
+    dist = OrderedSet()
+    dist1 = OrderedSet()
     prev = {}
 
     for i in range(len(Q)):
-        dist = add(dist, Q[i], MAX)
-        dist1 = add(dist, Q[i], MAX)
+        dist.add(Q[i], MAX)
+        dist1.add(Q[i], MAX)
         prev[i] = None
-    dist1 = dec(dist1, Q[src], 0)
-    dist = dec(dist, Q[src], 0)
+    dist1.dec(Q[src], 0)
+    dist.dec(Q[src], 0)
     while Q.__contains__(dest) and len(Q) > 1:
-        u = list(dist)[0]
+        u = list(dist.dic)[0]
         Q.remove(u)
         x = graph.all_out_edges_of_node(u)
         sort = tuple(x.values())
         for j in range(len(sort)):
 
-            alt = dist1[u] + x[sort[j][0]][1]
-            if alt < dist1[sort[j][0]]:
-                dist1 = dec(dist1, sort[j][0], alt)
-                dist = dec(dist, sort[j][0], alt)
+            alt = dist1.dic[u] + x[sort[j][0]][1]
+            if alt < dist1.dic[sort[j][0]]:
+                dist1.dec(sort[j][0], alt)
+                dist.dec(sort[j][0], alt)
                 prev[sort[j][0]] = u
-        del dist[u]
+        del dist.dic[u]
     t = [dest]
-    if dist1[dest] == MAX:
+    if dist1.dic[dest] == MAX:
         return -1, None
     prev1 = prev[dest]
     while prev1 != src:
@@ -54,40 +54,40 @@ def Dijkstra_shorted_path(graph: DiGraph, src, dest):
         prev1 = prev[prev1]
     t.append(src)
     t.reverse()
-    return dist1[dest], t
+    return dist1.dic[dest], t
 
 
 def Dijkstra_center(graph: DiGraph, src, dist2):
     Q = list(graph.Nodelist)
-    dist = creat()
-    dist1 = creat()
+    dist = OrderedSet()
+    dist1 = OrderedSet()
     prev = {}
 
     for i in range(len(Q)):
-        dist = add(dist, Q[i], MAX)
-        dist1 = add(dist, Q[i], MAX)
+        dist.add(Q[i], MAX)
+        dist1.add(Q[i], MAX)
         prev[i] = None
-    dist = dec(dist, src, 0)
-    dist1 = dec(dist1, src, 0)
+    dist.dec(src, 0)
+    dist.sort(src)
+    dist1.dec(src, 0)
+    dist1.sort(src)
     while len(Q) != 0 and len(Q) > 1:
-
-        u = list(dist)[0]
-
-        xx=dist[u]
+        u = list(dist.dic)[0]
+        xx = dist.dic[u]
         if xx > dist2:
             return float('inf')
-
         Q.remove(u)
         x = graph.all_out_edges_of_node(u)
         if x is None:
-            return 219439875
+            return MAX
         sort = tuple(x.values())
         for j in range(len(sort)):
-
-            alt = dist1[u] + sort[j][1]
-            if alt < dist1[sort[j][0]]:
-                dist1 = dec(dist1, sort[j][0], alt)
-                dist = dec(dist, sort[j][0], alt)
+            alt = dist1.dic[u] + sort[j][1]
+            if alt < dist1.dic[sort[j][0]]:
+                dist1.dec(sort[j][0], alt)
+                dist.dec(sort[j][0], alt)
                 prev[sort[j][0]] = u
-        del dist[u]
-    return dist1[Q[0]]
+                dist1.sort(sort[j][0])
+                dist.sort(sort[j][0])
+        del dist.dic[u]
+    return dist1.dic[Q[0]]

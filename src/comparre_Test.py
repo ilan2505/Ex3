@@ -3,25 +3,30 @@ import unittest
 from Ex3.src.GraphAlgo import GraphAlgo
 
 
+class getGraph:
+    def __init__(self):
+        self.graph = GraphAlgo(({}, {}, {}, 0, 0))
+        self.graph.load_from_json('../data/1000Nodes.json')
+
+    def get_Algo(self):
+        return self
 
 
 class MyTestCase(unittest.TestCase):
 
     def test_center(self):
-
-        self.Algo = GraphAlgo()
-        self.Algo.load_from_json('../data/A1.json')
-        self.Algo.centerPoint()
+        #self.Algo = GraphAlgo()
+        self.Algo = getGraph().get_Algo()
+        #self.Algo.get_Algo()
+        self.Algo.graph.centerPoint()
 
     def test_TSP(self):
-        self.Algo = GraphAlgo()
-        self.Algo.load_from_json('../data/1000Nodes.json')
-        self.Algo.TSP([1, 2, 3])
+        self.Algo = getGraph().get_Algo()
+        self.Algo.graph.TSP([1, 2, 3])
 
     def test_shorted_path(self):
-        self.Algo = GraphAlgo()
-        self.Algo.load_from_json('../data/1000Nodes.json')
-        self.Algo.shortest_path(1, 8)
+        self.Algo = getGraph().get_Algo()
+        print(self.Algo.graph.shortest_path(1, 8))
 
 
 if __name__ == '__main__':

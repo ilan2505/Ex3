@@ -63,7 +63,7 @@ class DiGraph:
         return "Edges=" + str((self.EdgeList)) + " Nodes=" + str((dict(self.Nodelist)))
 
     def __str__(self):
-        return "Edges=" + str(list(self.EdgeList)) + " Nodes=" + str(list(self.Nodelist))
+        return "Edges=" + str(self.EdgeList) + " Nodes=" + str(self.Nodelist)
 
     def remove_edge(self, node_id1: int, node_id2: int) -> bool:
         try:
