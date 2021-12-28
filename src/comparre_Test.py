@@ -1,6 +1,6 @@
 import unittest
 
-from Ex3.src.GraphAlgo import GraphAlgo
+from src.GraphAlgo import GraphAlgo
 
 
 class getGraph:
@@ -15,18 +15,16 @@ class getGraph:
 class MyTestCase(unittest.TestCase):
 
     def test_center(self):
-        #self.Algo = GraphAlgo()
         self.Algo = getGraph().get_Algo()
-        #self.Algo.get_Algo()
         self.Algo.graph.centerPoint()
 
     def test_TSP(self):
         self.Algo = getGraph().get_Algo()
-        self.Algo.graph.TSP([1, 2, 3])
+        self.Algo.graph.TSP([1, 2, 300])
 
     def test_shorted_path(self):
         self.Algo = getGraph().get_Algo()
-        print(self.Algo.graph.shortest_path(1, 8))
+        self.Algo.graph.shortest_path(1, 8)
 
 
 if __name__ == '__main__':

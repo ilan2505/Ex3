@@ -3,9 +3,9 @@ import time
 from random import random
 from typing import List
 
-from Ex3.src.DiGraph import DiGraph
-from Ex3.src.Dijkstra_Algorithm import Dijkstra_shorted_path, Dijkstra_center, value
-from Ex3.src.find_tsp import find_tsp
+from src.DiGraph import DiGraph
+from src.Dijkstra_Algorithm import Dijkstra_shorted_path, Dijkstra_center, value
+from src.find_tsp import find_tsp
 import matplotlib.pyplot as plt
 
 MAX = float('inf')
@@ -67,7 +67,6 @@ class GraphAlgo:
         dist = MAX
         nodelist = tuple(self.graph.get_all_v())
         for i in range(len(nodelist)):
-            print(i)
             dist1 = Dijkstra_center(self.graph, i, dist)
             if dist1 < dist:
                 dist = dist1

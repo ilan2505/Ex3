@@ -1,6 +1,6 @@
-from Ex3.src.DiGraph import DiGraph
+from src.DiGraph import DiGraph
 
-from Ex3.src.OrderedSet import OrderedSet
+from src.OrderedSet import OrderedSet
 
 MAX = float('inf')
 

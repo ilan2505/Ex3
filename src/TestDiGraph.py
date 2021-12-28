@@ -1,6 +1,6 @@
 import unittest
 
-from Ex3.src.DiGraph import DiGraph
+from src.DiGraph import DiGraph
 
 
 class TestDiGraph(unittest.TestCase):
@@ -41,7 +41,6 @@ class TestDiGraph(unittest.TestCase):
         node_id = 1
         g.remove_node(1)
         pos: tuple = (1, 2, 3)
-        print(g.Nodelist)
         g.add_node(node_id, pos)
         self.assertEqual(g.get_all_v(), {1: (1, (1, 2, 3))})
 

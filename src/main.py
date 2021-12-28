@@ -19,8 +19,8 @@ def check():
     ([1,3,4,2],3.5)
     """
     #check0()
-    #check1()
-    check3()
+    check1()
+    #check3()
 
 
 def check0():
@@ -56,7 +56,7 @@ def check1():
     :return:
     """
     g_algo = GraphAlgo()  # init an empty graph - for the GraphAlgo
-    file = "../data/A1.json"
+    file = "../data/A5.json"
     print(str(g_algo.graph)+"!")
     g_algo.load_from_json(file)  # init a GraphAlgo from a json file
     print("!"+str(g_algo.graph)+"!")

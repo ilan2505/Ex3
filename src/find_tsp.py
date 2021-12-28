@@ -1,7 +1,7 @@
 from typing import List
-from Ex3.src.Dijkstra_Algorithm import Dijkstra_shorted_path
+from src.Dijkstra_Algorithm import Dijkstra_shorted_path
 
-from Ex3.src.DiGraph import DiGraph
+from src.DiGraph import DiGraph
 
 MAX = 21943245
 
